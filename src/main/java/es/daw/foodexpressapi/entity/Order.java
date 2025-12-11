@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="orders")
@@ -42,5 +44,7 @@ public class Order {
     private Restaurant restaurant;
 
     // FALTA LA RELACIÓN ORDER_DETAILS...
-    //@OneToMany
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List<OrderDetail> orderDetails = new ArrayList<>();
+
 }
