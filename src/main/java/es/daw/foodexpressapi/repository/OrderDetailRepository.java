@@ -24,7 +24,7 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail, OrderD
             JOIN od.dish d
             WHERE od.order.id = :orderId
     """)
-    Optional<List<OrderDetailViewDTO>> findViewByOrderId(Long orderId);
+    public Optional<List<OrderDetailViewDTO>> findViewByOrderId(Long orderId);
     //List<OrderDetailViewDTO> findViewByOrderId(Long orderId);
 
     @Query("""
@@ -32,7 +32,7 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail, OrderD
             FROM OrderDetail od
                 WHERE od.order.id = :orderId
     """)
-    BigDecimal calculateTotal(Long orderId);
+    public BigDecimal calculateTotal(Long orderId);
 
 
 }

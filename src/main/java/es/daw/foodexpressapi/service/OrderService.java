@@ -26,6 +26,15 @@ public class OrderService {
 
     public List<OrderResponseDTO> filterOrders(String status, Long userId, Long restaurantId) {
 
+
+        OrderStatus orderStatus = null;
+        if (status != null) {
+            if (!OrderStatus.isValid(status))
+                throw new InvalidStatusException(status);
+            orderStatus = OrderStatus.valueOf(status);
+        }
+
+
         if (status != null && !OrderStatus.isValid(status)) {
             throw new InvalidStatusException(status);
         }
@@ -38,32 +47,34 @@ public class OrderService {
             throw new RestaurantNotFoundException(restaurantId);
         }
 
-        List<Order> orders;
+//        List<Order> orders;
+//
+//        if (status != null && userId != null && restaurantId != null) {
+//            orders = orderRepository.findByStatusAndUserIdAndRestaurantId(status, userId, restaurantId);
+//
+//        } else if (status != null && userId != null) {
+//            orders = orderRepository.findByStatusAndUserId(status, userId);
+//
+//        } else if (status != null && restaurantId != null) {
+//            orders = orderRepository.findByStatusAndRestaurantId(status, restaurantId);
+//
+//        } else if (userId != null && restaurantId != null) {
+//            orders = orderRepository.findByUserIdAndRestaurantId(userId, restaurantId);
+//
+//        } else if (status != null) {
+//            orders = orderRepository.findByStatus(status);
+//
+//        } else if (userId != null) {
+//            orders = orderRepository.findByUserId(userId);
+//
+//        } else if (restaurantId != null) {
+//            orders = orderRepository.findByRestaurantId(restaurantId);
+//
+//        } else {
+//            orders = orderRepository.findAll();
+//        }
 
-        if (status != null && userId != null && restaurantId != null) {
-            orders = orderRepository.findByStatusAndUserIdAndRestaurantId(status, userId, restaurantId);
-
-        } else if (status != null && userId != null) {
-            orders = orderRepository.findByStatusAndUserId(status, userId);
-
-        } else if (status != null && restaurantId != null) {
-            orders = orderRepository.findByStatusAndRestaurantId(status, restaurantId);
-
-        } else if (userId != null && restaurantId != null) {
-            orders = orderRepository.findByUserIdAndRestaurantId(userId, restaurantId);
-
-        } else if (status != null) {
-            orders = orderRepository.findByStatus(status);
-
-        } else if (userId != null) {
-            orders = orderRepository.findByUserId(userId);
-
-        } else if (restaurantId != null) {
-            orders = orderRepository.findByRestaurantId(restaurantId);
-
-        } else {
-            orders = orderRepository.findAll();
-        }
+        List<Order> orders = orderRepository.findByFilters(orderStatus, userId, restaurantId);
 
         return orders.stream()
                 .map(orderMapper::toResponse)

@@ -22,7 +22,7 @@ public class Dish {
     @Column(nullable = false)
     private BigDecimal price;
 
-    private String category;
+    private String category; //pendiente!!! mejor un enumerado!!! ¿y si la categoría marca un plus en el precio?
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)

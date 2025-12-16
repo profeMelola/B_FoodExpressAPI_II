@@ -28,7 +28,9 @@ public class Order {
     private LocalDateTime orderDate;
 
     @Column(nullable = false, length = 30)
-    private String status;
+    //private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
 
     // --------------- ASOCIACIÓN CON USER -------------

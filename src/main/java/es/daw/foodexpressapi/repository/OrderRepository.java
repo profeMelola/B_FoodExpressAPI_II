@@ -2,6 +2,7 @@ package es.daw.foodexpressapi.repository;
 
 import es.daw.foodexpressapi.dto.OrderSummaryDTO;
 import es.daw.foodexpressapi.entity.Order;
+import es.daw.foodexpressapi.enums.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -24,6 +25,23 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     List<Order> findByStatusAndUserIdAndRestaurantId(String status, Long userId, Long restaurantId);
 
     @Query("""
+        SELECT o FROM Order o
+            WHERE (:status IS NULL OR o.status =:status)
+                AND (:userId IS NULL OR o.user.id =: userId)
+                    AND (:restaurantId IS NULL OR o.restaurant.id =: restaurantId)
+        
+    """
+    )
+    public List<Order> findByFilters(
+            //String status,
+            OrderStatus status,
+            Long userId,
+            Long restaurantId
+    );
+
+    // ------------- PENDIENTE !!!!
+
+    @Query("""
         SELECT new es.daw.foodexpressapi.dto.OrderSummaryDTO(
             o.id,
             u.username,
@@ -38,7 +56,7 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
         GROUP BY o.id, u.username, r.name
         ORDER BY o.id
         """)
-    List<OrderSummaryDTO> findAllOrderSummaries();
+    public List<OrderSummaryDTO> findAllOrderSummaries();
 
 
 

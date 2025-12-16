@@ -7,6 +7,7 @@ import es.daw.foodexpressapi.repository.OrderDetailRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -34,6 +35,10 @@ public class OrderDetailService {
         return orderDetailRepository.findViewByOrderId(orderId)
                 .orElseThrow( () ->new RuntimeException("No hay detalles del pedido... "));
         //return orderDetailRepository.findViewByOrderId(orderId);
+    }
+
+    public BigDecimal calculateTotal(Long orderId) {
+        return orderDetailRepository.calculateTotal(orderId);
     }
 
 
