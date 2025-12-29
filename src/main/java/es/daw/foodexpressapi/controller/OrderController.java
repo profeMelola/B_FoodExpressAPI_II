@@ -1,6 +1,6 @@
 package es.daw.foodexpressapi.controller;
 
-import es.daw.foodexpressapi.dto.OrderResponseDTO;
+import es.daw.foodexpressapi.dto.*;
 import es.daw.foodexpressapi.service.OrderService;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
@@ -30,5 +30,25 @@ public class OrderController {
 
             return ResponseEntity.ok(orderService.filterOrders(status, userId, restaurantId));
 
+    }
+
+    @GetMapping("/summary")
+    public ResponseEntity<List<OrderSummaryDTO>> getOrderSummaries() {
+        return ResponseEntity.ok(orderService.getAllOrderSummaries());
+    }
+
+    @GetMapping("/totals-by-customer")
+    public ResponseEntity<List<CustomerTotalDTO>> getCustomerTotalsByCustomer(){
+        return ResponseEntity.ok(orderService.getAllCustomerTotals());
+    }
+
+    @GetMapping("/best-restaurants")
+    public ResponseEntity<List<RestaurantOrderCountDTO>> getBestRestaurant(){
+        return ResponseEntity.ok(orderService.getAllRestaurantOrderCounts());
+    }
+
+    @GetMapping("/best-dishes")
+    public ResponseEntity<List<DishesOrderCountDTO>> getBestDishes(){
+        return ResponseEntity.ok(orderService.getAllDishesOrderCounts());
     }
 }
