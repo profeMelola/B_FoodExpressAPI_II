@@ -1,6 +1,6 @@
 package es.daw.foodexpressapi.mapper;
 
-import es.daw.foodexpressapi.dto.DishDTO;
+import es.daw.foodexpressapi.dto.DishRequestDTO;
 import es.daw.foodexpressapi.dto.DishResponseDTO;
 import es.daw.foodexpressapi.entity.Dish;
 import lombok.RequiredArgsConstructor;
@@ -12,13 +12,14 @@ public class DishMapper {
 
     private final RestaurantMapper restaurantMapper;
 
-    public DishDTO toDTO(Dish dish) {
+    public DishRequestDTO toDTO(Dish dish) {
         if (dish == null) return null;
 
-        DishDTO dto = new DishDTO();
+        DishRequestDTO dto = new DishRequestDTO();
         dto.setName(dish.getName());
         dto.setPrice(dish.getPrice());
-        dto.setCategory(dish.getCategory());
+        //dto.setCategory(dish.getCategory());
+        dto.setCategory(dish.getCategory() != null? dish.getCategory().getLabel() : "");
 
         dto.setRestaurantName(
                 dish.getRestaurant() != null ? dish.getRestaurant().getName() : null
@@ -35,7 +36,8 @@ public class DishMapper {
                 .id(dish.getId())
                 .name(dish.getName())
                 .price(dish.getPrice())
-                .category(dish.getCategory())
+                //.category(dish.getCategory())
+                .category(dish.getCategory() != null? dish.getCategory().getLabel() : "")
                 .restaurant(restaurantMapper.toDTO(dish.getRestaurant()))
                 .build();
     }

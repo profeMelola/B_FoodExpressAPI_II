@@ -15,7 +15,7 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail, OrderD
     @Query("""
             SELECT new es.daw.foodexpressapi.dto.OrderDetailViewDTO(
                 d.name,
-                d.category,
+                CAST(d.category AS string),
                 od.quantity,
                 d.price,
                 od.subtotal

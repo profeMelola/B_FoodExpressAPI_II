@@ -1,6 +1,5 @@
 package es.daw.foodexpressapi.service;
 
-import es.daw.foodexpressapi.dto.DishDTO;
 import es.daw.foodexpressapi.dto.DishResponseDTO;
 import es.daw.foodexpressapi.mapper.DishMapper;
 import es.daw.foodexpressapi.repository.DishRepository;
@@ -9,8 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

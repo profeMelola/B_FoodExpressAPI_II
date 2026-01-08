@@ -37,6 +37,7 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getAllOrderSummaries());
     }
 
+    // -- JUAN ---
     @GetMapping("/totals-by-customer")
     public ResponseEntity<List<CustomerTotalDTO>> getCustomerTotalsByCustomer(){
         return ResponseEntity.ok(orderService.getAllCustomerTotals());
