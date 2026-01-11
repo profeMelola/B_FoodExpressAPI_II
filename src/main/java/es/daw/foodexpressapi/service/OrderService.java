@@ -4,6 +4,7 @@ import es.daw.foodexpressapi.dto.*;
 import es.daw.foodexpressapi.entity.Order;
 import es.daw.foodexpressapi.enums.OrderStatus;
 import es.daw.foodexpressapi.exception.InvalidStatusException;
+import es.daw.foodexpressapi.exception.OrderNotFoundException;
 import es.daw.foodexpressapi.exception.RestaurantNotFoundException;
 import es.daw.foodexpressapi.exception.UserNotFoundException;
 import es.daw.foodexpressapi.mapper.OrderMapper;
@@ -98,5 +99,20 @@ public class OrderService {
         return orderRepository.findAllDishesOrderCounts();
     }
 
+    public OrderResponseDTO updateOrder(Long id, OrderStatusDTO orderStatusDTO) {
 
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException(id));
+
+        if (!OrderStatus.isValid(orderStatusDTO.getStatus())) {
+            throw new InvalidStatusException(orderStatusDTO.getStatus());
+        }
+
+        OrderStatus orderStatus = OrderStatus.valueOf(orderStatusDTO.getStatus());
+        order.setStatus(orderStatus);
+
+        return orderMapper.toResponse(orderRepository.save(order));
+
+
+    }
 }

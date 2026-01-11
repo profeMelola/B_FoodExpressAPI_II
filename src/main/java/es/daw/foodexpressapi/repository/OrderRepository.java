@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderRepository extends JpaRepository<Order,Long> {
 
@@ -26,6 +27,8 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     List<Order> findByUserIdAndRestaurantId(Long userId, Long restaurantId);
 
     List<Order> findByStatusAndUserIdAndRestaurantId(String status, Long userId, Long restaurantId);
+
+    Optional<Order> findById(Long id);
 
     @Query("""
         SELECT o FROM Order o
@@ -99,6 +102,4 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
             ORDER BY SUM(od.quantity) DESC
     """)
     public List<DishesOrderCountDTO> findAllDishesOrderCounts();
-
-
 }

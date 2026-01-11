@@ -5,11 +5,9 @@ import es.daw.foodexpressapi.service.OrderService;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -51,5 +49,12 @@ public class OrderController {
     @GetMapping("/best-dishes")
     public ResponseEntity<List<DishesOrderCountDTO>> getBestDishes(){
         return ResponseEntity.ok(orderService.getAllDishesOrderCounts());
+    }
+
+    //---- DANIELA V -----
+    @PreAuthorize("hasRole('ADMIN') or hasRole('DELIVERY')")
+    @PutMapping("/{id}/status")
+    public ResponseEntity<OrderResponseDTO> updateOrderStatus(@PathVariable Long id, @RequestBody OrderStatusDTO orderStatusDTO) {
+        return ResponseEntity.ok(orderService.updateOrder(id, orderStatusDTO));
     }
 }
