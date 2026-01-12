@@ -1,11 +1,13 @@
 package es.daw.foodexpressapi.service;
 
 import es.daw.foodexpressapi.dto.OrderDetailDTO;
+import es.daw.foodexpressapi.dto.OrderDetailViewDTO;
 import es.daw.foodexpressapi.entity.OrderDetail;
 import es.daw.foodexpressapi.repository.OrderDetailRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -17,6 +19,7 @@ public class OrderDetailService {
     public List<OrderDetailDTO> findAll(){
         return orderDetailRepository.findAll()
                 .stream()
+                // MEJORA!!! implementar un sercicio de mapeo
                 .map(od ->
                         new OrderDetailDTO(
                                 od.getOrderDetailId().getOrderId(),
@@ -26,5 +29,18 @@ public class OrderDetailService {
                         ))
                 .toList();
     }
+
+    public List<OrderDetailViewDTO> findViewByOrderId(Long orderId) {
+        //Mejoras... si no hay pedido!!!! excepción???? Nada de optional al controlador!!!
+        return orderDetailRepository.findViewByOrderId(orderId)
+                .orElseThrow( () ->new RuntimeException("No hay detalles del pedido... "));
+        //return orderDetailRepository.findViewByOrderId(orderId);
+    }
+
+    public BigDecimal calculateTotal(Long orderId) {
+
+        return orderDetailRepository.calculateTotal(orderId);
+    }
+
 
 }

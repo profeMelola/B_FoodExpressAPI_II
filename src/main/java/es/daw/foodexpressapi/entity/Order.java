@@ -2,12 +2,11 @@ package es.daw.foodexpressapi.entity;
 
 import es.daw.foodexpressapi.enums.OrderStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="orders")
@@ -15,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 public class Order {
 
     @Id
@@ -26,7 +26,9 @@ public class Order {
     private LocalDateTime orderDate;
 
     @Column(nullable = false, length = 30)
-    private String status;
+    //private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
 
     // --------------- ASOCIACIÓN CON USER -------------
@@ -42,5 +44,7 @@ public class Order {
     private Restaurant restaurant;
 
     // FALTA LA RELACIÓN ORDER_DETAILS...
-    //@OneToMany
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List<OrderDetail> orderDetails = new ArrayList<>();
+
 }

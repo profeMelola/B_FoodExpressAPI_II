@@ -26,21 +26,21 @@ INSERT INTO restaurants (name, address, phone) VALUES
 
 -- Platos (unos 15 para paginar)
 INSERT INTO dishes (name, price, category, restaurant_id) VALUES
-                                                              ('Cheeseburger', 8.50, 'Hamburguesas', 1),
-                                                              ('Doble Bacon', 10.90, 'Hamburguesas', 1),
-                                                              ('Veggie Burger', 9.20, 'Hamburguesas', 1),
-                                                              ('Spaghetti Carbonara', 11.50, 'Pasta', 2),
-                                                              ('Lasagna Bolognesa', 12.00, 'Pasta', 2),
-                                                              ('Fetuccine Alfredo', 10.75, 'Pasta', 2),
-                                                              ('Sushi Maki', 13.50, 'Sushi', 3),
-                                                              ('Nigiri Salmón', 12.90, 'Sushi', 3),
-                                                              ('Tempura', 9.80, 'Entrante', 3),
-                                                              ('Patatas Deluxe', 4.50, 'Entrante', 1),
-                                                              ('Tiramisú', 5.90, 'Postre', 2),
-                                                              ('Helado Matcha', 6.20, 'Postre', 3),
-                                                              ('Onigiri', 7.80, 'Entrante', 3),
-                                                              ('Tagliatelle Pesto', 10.20, 'Pasta', 2),
-                                                              ('Chicken Burger', 9.80, 'Hamburguesas', 1);
+                                                              ('Cheeseburger', 8.50, 'HAMBURGUESAS', 1),
+                                                              ('Doble Bacon', 10.90, 'HAMBURGUESAS', 1),
+                                                              ('Veggie Burger', 9.20, 'HAMBURGUESAS', 1),
+                                                              ('Spaghetti Carbonara', 11.50, 'PASTA', 2),
+                                                              ('Lasagna Bolognesa', 12.00, 'PASTA', 2),
+                                                              ('Fetuccine Alfredo', 10.75, 'PASTA', 2),
+                                                              ('Sushi Maki', 13.50, 'SUSHI', 3),
+                                                              ('Nigiri Salmón', 12.90, 'SUSHI', 3),
+                                                              ('Tempura', 9.80, 'ENTRANTE', 3),
+                                                              ('Patatas Deluxe', 4.50, 'ENTRANTE', 1),
+                                                              ('Tiramisú', 5.90, 'POSTRE', 2),
+                                                              ('Helado Matcha', 6.20, 'POSTRE', 3),
+                                                              ('Onigiri', 7.80, 'ENTRANTE', 3),
+                                                              ('Tagliatelle Pesto', 10.20, 'PASTA', 2),
+                                                              ('Chicken Burger', 9.80, 'HAMBURGUESAS', 1);
 
 
 -- Pedidos
