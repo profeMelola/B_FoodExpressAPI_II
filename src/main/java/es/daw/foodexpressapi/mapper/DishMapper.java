@@ -6,6 +6,8 @@ import es.daw.foodexpressapi.entity.Dish;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 @Component
 @RequiredArgsConstructor
 public class DishMapper {
@@ -32,10 +34,15 @@ public class DishMapper {
     public DishResponseDTO toResponseDTO(Dish dish) {
         if (dish == null) return null;
 
+        BigDecimal base = dish.getPrice(); // precio de BD
+        BigDecimal finalPrice = (dish.getCategory() != null)?
+                    dish.getCategory().applyPlus(base): base;
+
         return DishResponseDTO.builder()
                 .id(dish.getId())
                 .name(dish.getName())
-                .price(dish.getPrice())
+                .price(finalPrice)
+                .basePrice(base)
                 //.category(dish.getCategory())
                 .category(dish.getCategory() != null? dish.getCategory().getLabel() : "")
                 .restaurant(restaurantMapper.toDTO(dish.getRestaurant()))

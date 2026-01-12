@@ -13,7 +13,10 @@ public class DishResponseDTO {
 
     private Long id;
     private String name;
-    private BigDecimal price;
+
+    private BigDecimal price; //precio final (plus)
+    private BigDecimal basePrice; // precio guardado
+
     private String category;
 
     @Valid
