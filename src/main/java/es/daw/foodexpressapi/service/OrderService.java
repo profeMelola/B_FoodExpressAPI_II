@@ -98,5 +98,9 @@ public class OrderService {
         return orderRepository.findAllDishesOrderCounts();
     }
 
-
+    public List<OrderResponseDTO> filterOrdersByUser(Long userId){
+        return orderRepository.findByUserId(userId).stream()
+                .map(orderMapper::toResponse)
+                .toList();
+    }
 }
