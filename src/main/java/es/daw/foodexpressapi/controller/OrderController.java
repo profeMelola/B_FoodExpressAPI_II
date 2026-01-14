@@ -1,15 +1,14 @@
 package es.daw.foodexpressapi.controller;
 
 import es.daw.foodexpressapi.dto.*;
+import es.daw.foodexpressapi.dto.order.CreateOrderDTO;
+import es.daw.foodexpressapi.dto.order.OrderResponseDTO;
+import es.daw.foodexpressapi.dto.order.OrderSummaryDTO;
 import es.daw.foodexpressapi.service.OrderService;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,7 +36,14 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getAllOrderSummaries());
     }
 
-    // -- JUAN ---
+    // PENDIENTE!!!!! CREAR PEDIDO
+    @PostMapping
+    public ResponseEntity<OrderResponseDTO> crearPedido(@RequestBody CreateOrderDTO dto){
+        return null;
+    }
+
+
+    // -- JUAN --- MEJOR LLEVARLOS A UN ReportController....
     @GetMapping("/totals-by-customer")
     public ResponseEntity<List<CustomerTotalDTO>> getCustomerTotalsByCustomer(){
         return ResponseEntity.ok(orderService.getAllCustomerTotals());

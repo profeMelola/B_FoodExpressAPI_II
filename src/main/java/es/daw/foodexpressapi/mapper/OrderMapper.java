@@ -1,6 +1,6 @@
 package es.daw.foodexpressapi.mapper;
 
-import es.daw.foodexpressapi.dto.OrderResponseDTO;
+import es.daw.foodexpressapi.dto.order.OrderResponseDTO;
 import es.daw.foodexpressapi.entity.Order;
 import org.springframework.stereotype.Component;
 

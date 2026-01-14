@@ -15,7 +15,8 @@ INSERT INTO users (username, password, full_name, email, role_id) VALUES
                                                                       ('admin', '$2a$10$IKp9rdPtsq4/L28Ivj85yOI0nyTRwKX1fHZfXDAKRePHQUD2vATGK', 'Admin Root', 'admin@foodexpress.com', 1),
                                                                       ('juan', '$2a$10$IKp9rdPtsq4/L28Ivj85yOI0nyTRwKX1fHZfXDAKRePHQUD2vATGK', 'Juan Pérez', 'juan@correo.com', 2),
                                                                       ('maria', '$2a$10$IKp9rdPtsq4/L28Ivj85yOI0nyTRwKX1fHZfXDAKRePHQUD2vATGK', 'María López', 'maria@correo.com', 2),
-                                                                      ('repa1', '$2a$10$IKp9rdPtsq4/L28Ivj85yOI0nyTRwKX1fHZfXDAKRePHQUD2vATGK', 'Repartidor Uno', 'repa1@correo.com', 3);
+                                                                      ('repa1', '$2a$10$IKp9rdPtsq4/L28Ivj85yOI0nyTRwKX1fHZfXDAKRePHQUD2vATGK', 'Repartidor Uno', 'repa1@correo.com', 3),
+                                                                        ('clienteMVC', '$2a$10$IKp9rdPtsq4/L28Ivj85yOI0nyTRwKX1fHZfXDAKRePHQUD2vATGK', 'Cliente de MVC', 'mvc@correo.com', 2);
 
 -- Restaurantes
 INSERT INTO restaurants (name, address, phone) VALUES

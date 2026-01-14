@@ -1,6 +1,8 @@
 package es.daw.foodexpressapi.service;
 
 import es.daw.foodexpressapi.dto.*;
+import es.daw.foodexpressapi.dto.order.OrderResponseDTO;
+import es.daw.foodexpressapi.dto.order.OrderSummaryDTO;
 import es.daw.foodexpressapi.entity.Order;
 import es.daw.foodexpressapi.enums.OrderStatus;
 import es.daw.foodexpressapi.exception.InvalidStatusException;
@@ -14,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

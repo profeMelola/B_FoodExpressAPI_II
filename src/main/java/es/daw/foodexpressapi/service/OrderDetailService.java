@@ -1,8 +1,7 @@
 package es.daw.foodexpressapi.service;
 
-import es.daw.foodexpressapi.dto.OrderDetailDTO;
-import es.daw.foodexpressapi.dto.OrderDetailViewDTO;
-import es.daw.foodexpressapi.entity.OrderDetail;
+import es.daw.foodexpressapi.dto.order.OrderDetailDTO;
+import es.daw.foodexpressapi.dto.order.OrderDetailViewDTO;
 import es.daw.foodexpressapi.repository.OrderDetailRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

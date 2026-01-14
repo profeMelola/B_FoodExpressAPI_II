@@ -1,12 +1,10 @@
 package es.daw.foodexpressapi.controller;
 
-import es.daw.foodexpressapi.dto.OrderDetailDTO;
-import es.daw.foodexpressapi.dto.OrderDetailViewDTO;
-import es.daw.foodexpressapi.entity.OrderDetail;
+import es.daw.foodexpressapi.dto.order.OrderDetailDTO;
+import es.daw.foodexpressapi.dto.order.OrderDetailViewDTO;
 import es.daw.foodexpressapi.service.OrderDetailService;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

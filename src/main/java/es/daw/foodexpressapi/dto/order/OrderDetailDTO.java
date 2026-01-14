@@ -1,4 +1,4 @@
-package es.daw.foodexpressapi.dto;
+package es.daw.foodexpressapi.dto.order;
 
 import java.math.BigDecimal;
 

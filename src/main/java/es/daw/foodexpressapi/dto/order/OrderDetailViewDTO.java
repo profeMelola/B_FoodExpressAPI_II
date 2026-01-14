@@ -1,7 +1,6 @@
-package es.daw.foodexpressapi.dto;
+package es.daw.foodexpressapi.dto.order;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
 
 import java.math.BigDecimal;
 
