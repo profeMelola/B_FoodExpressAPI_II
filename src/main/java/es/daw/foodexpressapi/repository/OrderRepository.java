@@ -5,6 +5,8 @@ import es.daw.foodexpressapi.dto.DishesOrderCountDTO;
 import es.daw.foodexpressapi.dto.order.OrderSummaryDTO;
 import es.daw.foodexpressapi.dto.RestaurantOrderCountDTO;
 import es.daw.foodexpressapi.dto.report.CustomerSpendDTO;
+import es.daw.foodexpressapi.dto.report.DishUnitsSoldDTO;
+import es.daw.foodexpressapi.dto.report.RestaurantOrdersDTO;
 import es.daw.foodexpressapi.entity.Order;
 import es.daw.foodexpressapi.enums.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -46,7 +48,7 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     // ------------- PENDIENTE !!!!
 
     @Query("""
-        SELECT new es.daw.foodexpressapi.dto.OrderSummaryDTO(
+        SELECT new es.daw.foodexpressapi.dto.order.OrderSummaryDTO(
             o.id,
             u.username,
             r.name,
@@ -142,8 +144,7 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     List<RestaurantOrdersDTO> findTopRestaurantsByOrders();
 
     // pendiente: mostrar todos los restaurnates, incluidos que no tienen ningún pedido...
-
-
+    // Está implementado en RestaurantRepository
 
     /*
         - No es dinero.

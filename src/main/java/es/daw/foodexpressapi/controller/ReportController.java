@@ -20,7 +20,10 @@ GET /api/reports/dishes/top-by-units
  */
 
 import es.daw.foodexpressapi.dto.report.CustomerSpendDTO;
+import es.daw.foodexpressapi.dto.report.DishUnitsSoldDTO;
+import es.daw.foodexpressapi.dto.report.RestaurantOrdersDTO;
 import es.daw.foodexpressapi.service.ReportService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +34,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/reports")
+@RequiredArgsConstructor
 public class ReportController {
 
     private final ReportService reportService;
@@ -49,9 +53,13 @@ public class ReportController {
         return ResponseEntity.ok(reportService.getTopRestaurantsByOrders());
     }
     // GET /api/reports/dishes/top-by-units
+    // MEJORAS!!!
+    // -limit opcional (por defecto)
+    //- @Validation.... no puede ser superior a 100
+    // - no debería usar limit sino usar paginación!!!! usaría size
     @GetMapping("/dishes/top-by-units")
     public ResponseEntity<List<DishUnitsSoldDTO>> getTopDishesByUnitsSold(
-            @RequestParam(defaultValue = "10") int limit
+            @RequestParam( defaultValue = "10") int limit
     ) {
         return ResponseEntity.ok(
                 reportService.getTopDishesByUnitsSold().stream().limit(limit).toList()

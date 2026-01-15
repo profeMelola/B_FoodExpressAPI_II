@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, OrderDetailId> {
 
     @Query("""
-            SELECT new es.daw.foodexpressapi.dto.OrderDetailViewDTO(
+            SELECT new es.daw.foodexpressapi.dto.order.OrderDetailViewDTO(
                 d.name,
                 CAST(d.category AS string),
                 od.quantity,

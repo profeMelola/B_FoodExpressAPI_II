@@ -3,6 +3,7 @@ package es.daw.foodexpressapi.service;
 import es.daw.foodexpressapi.dto.*;
 import es.daw.foodexpressapi.dto.order.OrderResponseDTO;
 import es.daw.foodexpressapi.dto.order.OrderSummaryDTO;
+import es.daw.foodexpressapi.dto.report.CustomerSpendDTO;
 import es.daw.foodexpressapi.entity.Order;
 import es.daw.foodexpressapi.enums.OrderStatus;
 import es.daw.foodexpressapi.exception.InvalidStatusException;
@@ -98,6 +99,7 @@ public class OrderService {
     public List<DishesOrderCountDTO> getAllDishesOrderCounts() {
         return orderRepository.findAllDishesOrderCounts();
     }
+
 
 
 }
